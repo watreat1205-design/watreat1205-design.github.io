@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VisionComfort – Visual Comfort App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="VisionComfort helps you read more comfortably on your phone with vision tests, a distraction-free web reader, and eye-friendly mini games." />
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --accent: #4c8bf5;
+      --accent-soft: #e3edff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border-subtle: #e5e7eb;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0f2fe 0, #f5f7fb 40%, #fdf2ff 100%);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #4c8bf5, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    main {
+      flex: 1;
+      padding: 12px 20px 32px;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      margin-bottom: 8px;
+    }
+
+    .hero-tagline {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      max-width: 34rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-secondary {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-visual {
+      background: linear-gradient(145deg, #e0edff, #fdf2ff);
+      border-radius: 24px;
+      padding: 14px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-frame {
+      border-radius: 22px;
+      background: #020617;
+      padding: 8px;
+      position: relative;
+      aspect-ratio: 9 / 16;
+      max-width: 270px;
+      margin: 0 auto;
+    }
+
+    .phone-screen {
+      border-radius: 16px;
+      background: radial-gradient(circle at top, #1e293b, #020617 60%);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: white;
+      font-size: 0.78rem;
+    }
+
+    .phone-screen-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .phone-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0;
+    }
+
+    .phone-chip {
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.25);
+      font-size: 0.65rem;
+    }
+
+    .phone-section {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 12px;
+      padding: 7px 8px;
+      margin-bottom: 6px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .phone-section-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .phone-footnote {
+      font-size: 0.65rem;
+      color: #cbd5f5;
+      opacity: 0.9;
+    }
+
+    .phone-glow {
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle at 10% 0, rgba(59,130,246,0.5), transparent 60%),
+                  radial-gradient(circle at 90% 100%, rgba(236,72,153,0.45), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .sections {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 20px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .feature-dot {
+      margin-top: 5px;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      flex-shrink: 0;
+    }
+
+    .screens-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .screen-placeholder {
+      border-radius: 14px;
+      background: linear-gradient(145deg, #e5e7eb, #f9fafb);
+      border: 1px dashed #cbd5f5;
+      padding: 10px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    footer {
+      border-top: 1px solid rgba(209, 213, 219, 0.8);
+      padding: 12px 20px 18px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: rgba(248, 250, 252, 0.9);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .sections {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      header {
+        padding-inline: 16px;
+      }
+
+      main {
+        padding-inline: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <div class="brand">
+          <div class="brand-logo">V</div>
+          <div>
+            VisionComfort
+            <div class="brand-sub">Visual Comfort on Your Phone</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Read more comfortably on your phone.</h1>
+          <p class="hero-tagline">
+            VisionComfort helps you test your reading comfort, adjust text size, and practice eye-friendly habits
+            with a simple vision test, a distraction-free web reader, and light mini games.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge"><span class="badge-dot"></span> Small banner ads only</span>
+            <span class="badge">No account · No signup</span>
+            <span class="badge">All settings saved on device</span>
+          </div>
+
+          <div class="hero-cta">
+            <!-- TODO: replace # with your actual Play Store URL when live -->
+            <a href="#" class="btn-primary">
+              <span>Get VisionComfort</span>
+              <span style="font-size:1.1rem;">➜</span>
+            </a>
+            <a href="privacy-policy.html" class="btn-secondary">Privacy policy</a>
+          </div>
+
+          <div class="hero-note">
+            Available in multiple languages. Designed for everyday reading, not a medical diagnosis.
+          </div>
+        </div>
+
+        <!-- PHONE MOCKUP -->
+        <div class="hero-visual">
+          <div class="phone-glow"></div>
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-screen-header">
+                <span style="font-size:0.7rem; opacity:0.9;">VisionComfort</span>
+                <span style="font-size:0.68rem; opacity:0.7;">Today · 20:15</span>
+              </div>
+
+              <div class="phone-chip-row">
+                <span class="phone-chip">Vision test</span>
+                <span class="phone-chip">Web reader</span>
+                <span class="phone-chip">Games Hub</span>
+              </div>
+
+              <div class="phone-section">
+                <div class="phone-section-title">Vision test flow</div>
+                <div style="font-size:0.7rem; opacity:0.9;">
+                  Quickly check the smallest text you can read comfortably and get a suggested comfort level.
+                </div>
+              </div>
+
+              <div class="phone-section">
+                <div class="phone-section-title">Web Reader</div>
+                <div style="font-size:0.7rem; opacity:0.9;">
+                  Paste any article link and read it with larger, clean text and fewer distractions.
+                </div>
+              </div>
+
+              <div class="phone-section">
+                <div class="phone-section-title">Mini Games for your eyes</div>
+                <div style="font-size:0.7rem; opacity:0.9;">
+                  Contrast, saccades, and text-zoom challenges to keep you engaged while respecting your eyes.
+                </div>
+              </div>
+
+              <div class="phone-footnote">
+                Settings don’t change your phone system. You stay in control.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAIN SECTIONS -->
+      <section class="sections">
+        <!-- Features card -->
+        <article class="card">
+          <h2>What VisionComfort includes</h2>
+          <p>Three main tools, kept simple so you can focus on reading and comfort, not configuration.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="feature-dot"></span>
+              <span><strong>Vision Test Flow</strong> – quick calibration to estimate your comfortable reading size.</span>
+            </li>
+            <li>
+              <span class="feature-dot"></span>
+              <span><strong>Web Reader</strong> – open article links in a cleaner, adjustable view with a text size slider.</span>
+            </li>
+            <li>
+              <span class="feature-dot"></span>
+              <span><strong>Games Hub</strong> – light mini games (Contrast Hunter, Saccade Trainer, TextZoom challenge) focused on comfort, not speed-running.</span>
+            </li>
+            <li>
+              <span class="feature-dot"></span>
+              <span><strong>Local settings only</strong> – your preferences stay on your device; no cloud accounts.</span>
+            </li>
+            <li>
+              <span class="feature-dot"></span>
+              <span><strong>Small, static banners</strong> – one ad banner per screen, no full-screen surprises.</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Screenshots / preview card -->
+        <article class="card">
+          <h2>App preview</h2>
+          <p>Here is where you can add real screenshots from your app store listing.</p>
+
+          <div class="screens-grid">
+            <div class="screen-placeholder">
+              Vision test screen<br />
+              <small>(Replace with real screenshot)</small>
+            </div>
+            <div class="screen-placeholder">
+              Web Reader with slider<br />
+              <small>(Replace with real screenshot)</small>
+            </div>
+            <div class="screen-placeholder">
+              Games Hub – three mini games<br />
+              <small>(Replace with real screenshot)</small>
+            </div>
+            <div class="screen-placeholder">
+              Text Zoom comfort result<br />
+              <small>(Replace with real screenshot)</small>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> VisionComfort · Watreat1205 Design</div>
+        <div class="footer-links">
+          <a href="privacy-policy.html">Privacy policy</a>
+          <a href="mailto:watreat1205@gmail.com">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Small helper: keep year updated
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
