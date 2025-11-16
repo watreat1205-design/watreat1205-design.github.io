@@ -58,24 +58,24 @@
     }
 
     .brand-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #ffffff;              /* ← white background */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;                     /* little padding around the icon */
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
-}
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+    }
 
-.brand-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
     .brand-text {
       display: flex;
@@ -341,6 +341,59 @@
       object-fit: cover;
     }
 
+    /* Screenshots gallery */
+    .screenshots-section {
+      margin-bottom: 40px;
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .screenshots-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .screenshots-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .phone-card {
+      max-width: 260px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, #0f172a, #1f2937);
+      border-radius: 28px;
+      padding: 6px;
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.55);
+    }
+
+    .phone-inner {
+      background: #000;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .phone-inner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .phone-caption {
+      margin-top: 8px;
+      font-size: 13px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
     /* Footer */
     footer {
       margin-top: 24px;
@@ -360,12 +413,12 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header>
       <div class="brand">
         <div class="brand-logo">
-          <!-- Logo file in your repo -->
           <img src="visioncomfort-logo.png" alt="VisionComfort logo" />
         </div>
         <div class="brand-text">
@@ -413,7 +466,6 @@
 
       <div class="hero-visual">
         <div class="hero-banner">
-          <!-- Main banner from your repo -->
           <img src="visioncomfort-banner.png" alt="VisionComfort preview" />
         </div>
       </div>
@@ -473,10 +525,12 @@
       <div class="vision-copy">
         <h2>See your comfortable reading size in seconds</h2>
         <p>
-          The Vision Test gently adjusts text size and asks you one simple question: “Can you still read this comfortably?”
+          The Vision Test gently adjusts text size and asks you one simple question:
+          “Can you still read this comfortably?”
         </p>
         <p>
-          After a few taps, VisionComfort suggests a level that feels good for you today — and you can apply it across the app.
+          After a few taps, VisionComfort suggests a level that feels good for you today —
+          and you can apply it across the app.
         </p>
         <ul>
           <li>Step-by-step text size changes</li>
@@ -487,103 +541,61 @@
 
       <div class="vision-screen-card">
         <div class="vision-screen-inner">
-          .screenshots-section {
-  margin-bottom: 40px;
-}
-
-.screenshots-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-@media (max-width: 900px) {
-  .screenshots-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
-  .screenshots-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.phone-card {
-  max-width: 260px;
-  margin: 0 auto;
-  background: linear-gradient(145deg, #0f172a, #1f2937);
-  border-radius: 28px;
-  padding: 6px;
-  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.55);
-}
-
-.phone-inner {
-  background: #000;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-}
-
-.phone-inner img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-.phone-caption {
-  margin-top: 8px;
-  font-size: 13px;
-  text-align: center;
-  color: var(--text-muted);
-}
-
-          <!-- ✅ Replace this src with your real screenshot file name -->
-          <img src="vision-test-screen.png" />      
+          <!-- Your real vision test screenshot -->
+          <img src="Vision-test-screen.jpg"
+               alt="VisionComfort vision test screen on Android" />
         </div>
-       <section class="screenshots-section">
-  <h2 class="section-title">A quick look inside the app</h2>
-  <p class="section-subtitle">
-    Here are a few key screens from VisionComfort.
-  </p>
-
-  <div class="screenshots-grid">
-    <!-- Welcome screen -->
-    <div class="phone-card">
-      <div class="phone-inner">
-        <img src="screenshot-welcome.png"
-             alt="VisionComfort welcome screen" />
       </div>
-      <div class="phone-caption">Welcome screen</div>
-    </div>
+    </section>
 
-    <!-- Web Reader -->
-    <div class="phone-card">
-      <div class="phone-inner">
-        <img src="screenshot-webreader.png"
-             alt="VisionComfort Web Reader screen" />
-      </div>
-      <div class="phone-caption">Web Reader</div>
-    </div>
+    <!-- EXTRA SCREENSHOTS -->
+    <section class="screenshots-section">
+      <h2 class="section-title">A quick look inside the app</h2>
+      <p class="section-subtitle">
+        Here are a few key screens from VisionComfort.
+      </p>
 
-    <!-- Games Hub -->
-    <div class="phone-card">
-      <div class="phone-inner">
-        <img src="screenshot-gameshub.png"
-             alt="VisionComfort Games Hub screen" />
+      <div class="screenshots-grid">
+        <!-- Welcome screen -->
+        <div class="phone-card">
+          <div class="phone-inner">
+            <img src="screenshot-welcome.jpg"
+                 alt="VisionComfort welcome screen" />
+          </div>
+          <div class="phone-caption">Welcome screen</div>
+        </div>
+
+        <!-- Web Reader -->
+        <div class="phone-card">
+          <div class="phone-inner">
+            <img src="screenshot-webreader.jpg"
+                 alt="VisionComfort Web Reader screen" />
+          </div>
+          <div class="phone-caption">Web Reader</div>
+        </div>
+
+        <!-- Games Hub -->
+        <div class="phone-card">
+          <div class="phone-inner">
+            <img src="screenshot-gameshub.jpg"
+                 alt="VisionComfort Games Hub screen" />
+          </div>
+          <div class="phone-caption">Games Hub</div>
+        </div>
       </div>
-      <div class="phone-caption">Games Hub</div>
-    </div>
-  </div>
-</section>
- 
+    </section>
+
     <footer>
-      <div>© <?php echo date('Y'); ?> VisionComfort. All rights reserved.</div>
+      <div>© <span id="year"></span> VisionComfort. All rights reserved.</div>
       <div>
         <a href="privacy-policy.html">Privacy policy</a>
       </div>
     </footer>
   </div>
+
+  <script>
+    // Set current year in footer (replaces the PHP you had)
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
