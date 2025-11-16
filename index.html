@@ -27,9 +27,9 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #e0f2fe 0, #f5f7fb 40%, #fdf2ff 100%);
+      background: radial-gradient(circle at top, #eef3ff 0, #f5f7fb 42%, #f5f7fb 100%);
       color: var(--text-main);
-      line-height: 1.5;
+      min-height: 100vh;
     }
 
     a {
@@ -38,383 +38,466 @@
     }
 
     .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
     }
 
     header {
-      padding: 16px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
     }
 
-    .brand-logo-img {
+    .brand-logo {
       width: 40px;
       height: 40px;
       border-radius: 12px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    .brand-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    main {
-      flex: 1;
-      padding: 12px 20px 32px;
-    }
-
-    .hero {
-      max-width: 1100px;
-      margin: 0 auto 32px;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 32px;
+      overflow: hidden;
+      background: #111827;
+      display: flex;
       align-items: center;
+      justify-content: center;
     }
 
-    .hero-text h1 {
-      font-size: clamp(2rem, 3vw, 2.6rem);
-      margin-bottom: 8px;
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .hero-tagline {
-      font-size: 0.98rem;
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-tagline {
+      font-size: 13px;
       color: var(--text-muted);
-      margin-bottom: 16px;
-      max-width: 34rem;
     }
 
-    .hero-badges {
+    .store-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 16px;
     }
 
-    .badge {
-      font-size: 0.75rem;
-      padding: 4px 10px;
+    .store-badge {
+      padding: 6px 10px;
       border-radius: 999px;
-      background: var(--accent-soft);
-      color: #1d4ed8;
-      border: 1px solid #bfdbfe;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .store-badge span {
+      font-weight: 600;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-text h1 {
+      font-size: clamp(28px, 4vw, 34px);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero-text p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-highlights {
+      margin-bottom: 18px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .hero-highlights span {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
+      margin-right: 10px;
     }
 
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 10px;
+      align-items: center;
     }
 
-    .btn-primary {
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: white;
+    .primary-btn {
+      background: linear-gradient(135deg, #4c8bf5, #2563eb);
+      color: #fff;
       border: none;
-      font-size: 0.92rem;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 14px;
       font-weight: 600;
       cursor: pointer;
+      box-shadow: 0 9px 20px rgba(37, 99, 235, 0.3);
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
     }
 
-    .btn-secondary {
-      padding: 9px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.9);
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
-
-    .hero-note {
-      font-size: 0.78rem;
+    .secondary-link {
+      font-size: 14px;
       color: var(--text-muted);
+      text-decoration: underline;
+      text-decoration-style: dotted;
     }
 
+    /* Hero image / banner */
     .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-banner {
+      width: 100%;
+      max-width: 420px;
       border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+      background: #000;
     }
 
-    .hero-visual img {
-      width: 100%;
+    .hero-banner img {
       display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
 
-    .sections {
-      max-width: 1100px;
-      margin: 0 auto;
+    /* Features section */
+    .section-title {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .features-grid {
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
-      gap: 24px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.96);
-      border-radius: 20px;
-      padding: 18px 18px 16px;
-      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.08);
-      border: 1px solid rgba(226, 232, 240, 0.9);
-    }
-
-    .card h2 {
-      font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .feature-list {
-      list-style: none;
-      padding-left: 0;
-      font-size: 0.88rem;
-      color: var(--text-main);
-    }
-
-    .feature-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .feature-dot {
-      margin-top: 5px;
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-      flex-shrink: 0;
-    }
-
-    .screens-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .screen-placeholder {
-      border-radius: 14px;
-      background: linear-gradient(145deg, #e5e7eb, #f9fafb);
-      border: 1px dashed #cbd5f5;
-      padding: 10px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    footer {
-      border-top: 1px solid rgba(209, 213, 219, 0.8);
-      padding: 12px 20px 18px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      background: rgba(248, 250, 252, 0.9);
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-links a {
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
     @media (max-width: 900px) {
-      .hero {
+      .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .features-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+    }
 
-      .hero-visual {
-        order: -1;
-      }
+    .feature-card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 14px 14px 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-      .sections {
+    .feature-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      font-size: 11px;
+      color: #1d4ed8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      align-self: flex-start;
+    }
+
+    .feature-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .feature-list {
+      margin-top: 4px;
+      padding-left: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .feature-list li {
+      margin-bottom: 3px;
+    }
+
+    /* Vision test screenshot block */
+    .vision-test-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 840px) {
+      .vision-test-section {
         grid-template-columns: minmax(0, 1fr);
       }
+    }
 
-      header {
-        padding-inline: 16px;
-      }
+    .vision-copy h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
 
-      main {
-        padding-inline: 16px;
-      }
+    .vision-copy p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .vision-copy ul {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-left: 16px;
+    }
+
+    .vision-copy li {
+      margin-bottom: 4px;
+    }
+
+    .vision-screen-card {
+      background: linear-gradient(145deg, #0f172a, #1f2937);
+      border-radius: 28px;
+      padding: 6px;
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.55);
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .vision-screen-inner {
+      background: #000;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .vision-screen-inner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 24px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 14px;
+    }
+
+    footer a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
     }
   </style>
 </head>
 <body>
   <div class="page">
     <header>
-      <div>
-        <div class="brand">
-          <img src="visioncomfort-logo.png"
-               class="brand-logo-img"
-               alt="VisionComfort logo">
-          <div>
-            VisionComfort
-            <div class="brand-sub">Visual Comfort on Your Phone</div>
-          </div>
+      <div class="brand">
+        <div class="brand-logo">
+          <!-- Logo file in your repo -->
+          <img src="visioncomfort-logo.png" alt="VisionComfort logo" />
+        </div>
+        <div class="brand-text">
+          <div class="brand-name">VisionComfort</div>
+          <div class="brand-tagline">Read comfortably. Every day.</div>
+        </div>
+      </div>
+
+      <div class="store-badges">
+        <div class="store-badge">
+          <span>Google Play</span>
+          <span>Open testing</span>
+        </div>
+        <div class="store-badge">
+          <span>Android</span>
+          <span>Phone &amp; tablet</span>
         </div>
       </div>
     </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero-text">
-          <h1>Read more comfortably on your phone.</h1>
-          <p class="hero-tagline">
-            VisionComfort helps you test your reading comfort, adjust text size, and practice eye-friendly habits
-            with a simple vision test, a distraction-free web reader, and light mini games.
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Make reading on your phone feel easier on your eyes.</h1>
+        <p>
+          VisionComfort helps you find your daily comfort level, read with less strain,
+          and keep your eyes relaxed with quick, eye-friendly mini games.
+        </p>
+
+        <div class="hero-highlights">
+          <span>• Personalized vision test</span>
+          <span>• Distraction-free web reader</span>
+          <span>• 3 quick training games</span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://play.google.com/apps/testing/com.visioncomfort.app" target="_blank" rel="noopener">
+            <button class="primary-btn">
+              Join Open Testing on Google Play
+            </button>
+          </a>
+          <a class="secondary-link" href="#features">See how it works ↓</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-banner">
+          <!-- Main banner from your repo -->
+          <img src="visioncomfort-banner.png" alt="VisionComfort preview" />
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+      <h2 class="section-title">What you can do with VisionComfort</h2>
+      <p class="section-subtitle">
+        A simple toolkit to make reading on your phone feel calmer, clearer, and more comfortable.
+      </p>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-tag">Vision test</div>
+          <h3 class="feature-title">Find today’s comfort level</h3>
+          <p class="feature-desc">
+            A quick test that adjusts text size step-by-step and suggests your comfort level for the day.
           </p>
-
-          <div class="hero-badges">
-            <span class="badge"><span class="badge-dot"></span> Small banner ads only</span>
-            <span class="badge">No account · No signup</span>
-            <span class="badge">All settings saved on device</span>
-          </div>
-
-          <div class="hero-cta">
-            <!-- TODO: replace # with your actual Play Store URL when live -->
-            <a href="#" class="btn-primary">
-              <span>Get VisionComfort</span>
-              <span style="font-size:1.1rem;">➜</span>
-            </a>
-            <a href="privacy-policy.html" class="btn-secondary">Privacy policy</a>
-          </div>
-
-          <div class="hero-note">
-            Available in multiple languages. Designed for everyday reading, not a medical diagnosis.
-          </div>
-        </div>
-
-        <!-- HERO BANNER WITH REAL GRAPHIC -->
-        <div class="hero-visual">
-          <img src="visioncomfort-banner.png"
-               alt="VisionComfort – Smarter Display, Easier Reading">
-        </div>
-      </section>
-
-      <!-- MAIN SECTIONS -->
-      <section class="sections">
-        <!-- Features card -->
-        <article class="card">
-          <h2>What VisionComfort includes</h2>
-          <p>Three main tools, kept simple so you can focus on reading and comfort, not configuration.</p>
           <ul class="feature-list">
-            <li>
-              <span class="feature-dot"></span>
-              <span><strong>Vision Test Flow</strong> – quick calibration to estimate your comfortable reading size.</span>
-            </li>
-            <li>
-              <span class="feature-dot"></span>
-              <span><strong>Web Reader</strong> – open article links in a cleaner, adjustable view with a text size slider.</span>
-            </li>
-            <li>
-              <span class="feature-dot"></span>
-              <span><strong>Games Hub</strong> – light mini games (Contrast Hunter, Saccade Trainer, TextZoom challenge) focused on comfort, not speed-running.</span>
-            </li>
-            <li>
-              <span class="feature-dot"></span>
-              <span><strong>Local settings only</strong> – your preferences stay on your device; no cloud accounts.</span>
-            </li>
-            <li>
-              <span class="feature-dot"></span>
-              <span><strong>Small, static banners</strong> – one ad banner per screen, no full-screen surprises.</span>
-            </li>
+            <li>Dynamic text zoom staircase</li>
+            <li>Recognize when text is too small</li>
+            <li>Save your best level over time</li>
           </ul>
         </article>
 
-        <!-- Screenshots / preview card -->
-        <article class="card">
-          <h2>App preview</h2>
-          <p>Here is where you can add real screenshots from your app store listing.</p>
-
-          <div class="screens-grid">
-            <div class="screen-placeholder">
-              Vision test screen<br />
-              <small>(Replace with real screenshot)</small>
-            </div>
-            <div class="screen-placeholder">
-              Web Reader with slider<br />
-              <small>(Replace with real screenshot)</small>
-            </div>
-            <div class="screen-placeholder">
-              Games Hub – three mini games<br />
-              <small>(Replace with real screenshot)</small>
-            </div>
-            <div class="screen-placeholder">
-              Text Zoom comfort result<br />
-              <small>(Replace with real screenshot)</small>
-            </div>
-          </div>
+        <article class="feature-card">
+          <div class="feature-tag">Web reader</div>
+          <h3 class="feature-title">Read web pages with less noise</h3>
+          <p class="feature-desc">
+            Paste a link and read it in a clean, focused layout with your comfort settings applied.
+          </p>
+          <ul class="feature-list">
+            <li>Distraction-free reading experience</li>
+            <li>Adjustable font &amp; spacing</li>
+            <li>Dark mode for night reading</li>
+          </ul>
         </article>
-      </section>
-    </main>
+
+        <article class="feature-card">
+          <div class="feature-tag">Mini games</div>
+          <h3 class="feature-title">Train contrast &amp; focus</h3>
+          <p class="feature-desc">
+            Three tiny games designed to lightly engage your visual focus and contrast sensitivity.
+          </p>
+          <ul class="feature-list">
+            <li>Contrast Hunter</li>
+            <li>Number Sprint</li>
+            <li>Text Zoom Challenge</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- VISION TEST SCREENSHOT SECTION -->
+    <section class="vision-test-section">
+      <div class="vision-copy">
+        <h2>See your comfortable reading size in seconds</h2>
+        <p>
+          The Vision Test gently adjusts text size and asks you one simple question: “Can you still read this comfortably?”
+        </p>
+        <p>
+          After a few taps, VisionComfort suggests a level that feels good for you today — and you can apply it across the app.
+        </p>
+        <ul>
+          <li>Step-by-step text size changes</li>
+          <li>Simple “clear / too small” choices</li>
+          <li>Daily comfort level suggestion</li>
+        </ul>
+      </div>
+
+      <div class="vision-screen-card">
+        <div class="vision-screen-inner">
+          <!-- ✅ Replace this src with your real screenshot file name -->
+          <img src="vision-test-screen.png"
+               alt="VisionComfort vision test screen on Android" />
+        </div>
+      </div>
+    </section>
 
     <footer>
-      <div class="footer-inner">
-        <div>© <span id="year"></span> VisionComfort · Watreat1205 Design</div>
-        <div class="footer-links">
-          <a href="privacy-policy.html">Privacy policy</a>
-          <a href="mailto:watreat1205@gmail.com">Contact</a>
-        </div>
+      <div>© <?php echo date('Y'); ?> VisionComfort. All rights reserved.</div>
+      <div>
+        <a href="privacy-policy.html">Privacy policy</a>
       </div>
     </footer>
   </div>
-
-  <script>
-    // Small helper: keep year updated
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
